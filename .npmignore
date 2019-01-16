@@ -1,7 +1,6 @@
 public/
 node_modules/
 docs/
-demo/
 .gitignore
 .editorconfig
 .eslintrc
