@@ -4,7 +4,7 @@ module.exports = {
       openAnalyzer: false
     }
   },
-
-  baseUrl: './',
+  css: { extract: false },
+  publicPath: './',
   lintOnSave: undefined
 }
