@@ -2,7 +2,7 @@
 
 > A beautiful input made with Vue JS
 
-![vue-input-ui](./src/assets/demo.png)
+![vue-input-ui](./public/vue-input-ui-demo.gif)
 
 ## Demo
 

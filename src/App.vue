@@ -58,12 +58,14 @@
         <VueInputUi
           v-model="value6"
           label="is disabled"
+          :dark="darkMode"
           disabled
         />
         <br>
         <VueInputUi
           v-model="value7"
           label="Number input"
+          :dark="darkMode"
           type="number"
         />
       </div>
@@ -87,6 +89,7 @@
         value4: 'Error management',
         value5: 'Customize size & color (dark mode)',
         value6: null,
+        value7: null,
         darkMode: false
       }
     }
@@ -129,7 +132,6 @@
   .container {
     width: 80%;
     margin: 0 auto;
-    padding-top: 40px;
     text-align: center;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
