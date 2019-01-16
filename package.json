@@ -17,6 +17,9 @@
     "test:unit:watch": "vue-cli-service test:unit --watch",
     "ui": "vue ui"
   },
+  "files": [
+    "dist/"
+  ],
   "dependencies": {
     "vue": "^2.5.21"
   },
@@ -41,11 +44,26 @@
     "last 2 versions",
     "not ie <= 8"
   ],
+  "keywords": [
+    "vue",
+    "vuejs",
+    "input",
+    "text",
+    "ctk",
+    "chronotruck",
+    "javascript",
+    "vue-component",
+    "chronotruck"
+  ],
   "license": "MIT",
   "main": "dist/vue-input-ui.common.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LouisMazel/vue-input-ui.git"
   },
+  "bugs": {
+    "url": "https://github.com/LouisMazel/vue-input-ui/issues"
+  },
+  "homepage": "https://github.com/LouisMazel/vue-input-ui#readme",
   "types": "dist/index.d.ts"
 }
