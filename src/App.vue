@@ -49,12 +49,20 @@
         <VueInputUi
           v-model="value4"
           dark
+          label="is dark"
           color="purple"
         />
         <br>
         <VueInputUi
           v-model="value4"
+          label="is disabled"
           disabled
+        />
+        <br>
+        <VueInputUi
+          v-model="value5"
+          label="Number input"
+          type="number"
         />
       </div>
     </div>
@@ -75,6 +83,7 @@
         value2: 'Hello world!',
         value3: 'A beautiful input made with VueJs',
         value4: null,
+        value5: null,
         darkMode: false
       }
     }

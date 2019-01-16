@@ -43,7 +43,7 @@
     name: 'VueInputUi',
     props: {
       value: { type: [String, Object], required: false, default: null },
-      label: { type: String, default: 'Select date & time' },
+      label: { type: String, default: 'Enter text' },
       hint: { type: String, default: String },
       error: { type: Boolean, default: Boolean },
       color: { type: String, default: 'dodgerblue' },
