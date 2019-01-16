@@ -8,7 +8,9 @@
       <h1>{{ !value1 ? '-' : value1 }}</h1>
       <h2>{{ !value2 ? '-' : value2 }}</h2>
       <h3>{{ !value3 ? '-' : value3 }}</h3>
-      <p>{{ !value4 ? '-' : value4 }}</p>
+      <h4>{{ !value4 ? '-' : value4 }}</h4>
+      <h5>{{ !value5 ? '-' : value5 }}</h5>
+      <p>{{ !value6 ? '-' : value6 }}</p>
       <button
         class="btn"
         style="margin-top: 20px;"
@@ -21,7 +23,7 @@
         <VueInputUi
           v-model="value1"
           label="Initial input"
-          color="#F00"
+          color="purple"
           size="sm"
           :dark="darkMode"
         />
@@ -47,20 +49,20 @@
         />
         <br>
         <VueInputUi
-          v-model="value4"
+          v-model="value5"
           dark
           label="is dark"
           color="purple"
         />
         <br>
         <VueInputUi
-          v-model="value4"
+          v-model="value6"
           label="is disabled"
           disabled
         />
         <br>
         <VueInputUi
-          v-model="value5"
+          v-model="value7"
           label="Number input"
           type="number"
         />
@@ -79,11 +81,12 @@
     },
     data () {
       return {
-        value1: 'VueCtkInputText',
+        value1: 'VueInputUI',
         value2: 'Hello world!',
         value3: 'A beautiful input made with VueJs',
-        value4: null,
-        value5: null,
+        value4: 'Error management',
+        value5: 'Customize size & color (dark mode)',
+        value6: null,
         darkMode: false
       }
     }

@@ -5,7 +5,8 @@
 ![vue-input-ui](./src/assets/demo.png)
 
 ## Demo
-[Enjoy here](https://htmlpreview.github.io/?https://github.com/LouisMazel/vue-input-ui/blob/master/demo/index.html)
+
+[Enjoy](https://louismazel.github.io/vue-input-ui/)
 
 ## Installation
 
