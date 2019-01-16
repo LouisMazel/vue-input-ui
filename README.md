@@ -51,10 +51,16 @@ Vue.component('vue-input-ui', VueInputUi);
 | Props      | Type       | Required | Default    | Options        |
 |------------|------------|----------|------------|----------------|
 | v-model    | String/Int | true     | -          | -              |
+| id      | String     | false    | VueInputUi | -              |
 | label      | String     | false    | Enter Text | -              |
 | type       | String     | no       | text       | text or number |
 | hint*       | text       | no       | -          |                |
-| error-hint** | Boolean    | no       | false      |                |
+| error** | Boolean    | no       | false      |                |
+| disabled | Boolean    | no       | false      |                |
+| dark | Boolean    | no       | false      |                |
+| size | Boolean    | no       | false      |                |
+| readonly | Boolean    | no       | false      |                |
+| color | String `HEX`   | no       | dogderblue      |                |
 
 ## Contribution
 
