@@ -24,7 +24,7 @@
 
 ```js
 import VueInputUi from 'vue-input-ui';
-import 'vue-input-ui/dist/vue-input-ui.min.css';
+import 'vue-input-ui/dist/vue-input-ui.css';
 
 Vue.component('vue-input-ui', VueInputUi);
 ```
@@ -39,8 +39,8 @@ Vue.component('vue-input-ui', VueInputUi);
 <VueInputUi v-model="yourValue" />
 
 <script src="https://unpkg.com/vue" charset="utf-8"></script>
-<script src="./dist/umd/vue-input-ui.min.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="./dist/umd/vue-input-ui.css">
+<script src="./dist/vue-input-ui.umd.min.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="./dist/vue-input-ui.css">
 
 <script type="text/javascript">
   Vue.component('vue-input-ui', window.VueInputUi.default);
