@@ -6,7 +6,8 @@
       'has-value': value,
       'has-error': error,
       'is-disabled': disabled,
-      'is-dark': dark
+      'is-dark': dark,
+      'is-focused': valid
     }, size]"
     class="field"
     @click="focusInput"
@@ -42,7 +43,7 @@
   export default {
     name: 'VueInputUi',
     props: {
-      value: { type: [String, Object], required: false, default: null },
+      value: { type: [String, Number], default: null },
       label: { type: String, default: 'Enter text' },
       hint: { type: String, default: String },
       error: { type: Boolean, default: Boolean },
@@ -53,6 +54,8 @@
       size: { type: String, default: String },
       type: { type: String, default: 'text' },
       readonly: { type: Boolean, default: false },
+      valid: { type: Boolean, default: false },
+      validColor: { type: String, default: 'yellowgreen' }
     },
     data: function () {
       return {
@@ -61,15 +64,15 @@
     },
     computed: {
       borderStyle () {
-        const cond = (this.isFocus && !this.error)
+        const cond = (this.isFocus && !this.error) || this.valid
         return cond
-          ? { border: `1px solid ${this.color} !important` }
+          ? { border: `1px solid ${this.valid ? this.validColor : this.color} !important` }
           : null
       },
       colorStyle () {
-        const cond = this.isFocus
+        const cond = this.isFocus || this.valid
         return cond
-          ? { color: `${this.color}` }
+          ? { color: `${this.valid ? this.validColor : this.color}` }
           : null
       },
       inputValue: {

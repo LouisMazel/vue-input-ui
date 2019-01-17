@@ -10,7 +10,6 @@
       <h3>{{ !value3 ? '-' : value3 }}</h3>
       <h4>{{ !value4 ? '-' : value4 }}</h4>
       <h5>{{ !value5 ? '-' : value5 }}</h5>
-      <p>{{ !value6 ? '-' : value6 }}</p>
       <button
         class="btn"
         style="margin-top: 20px;"
@@ -36,6 +35,13 @@
         <br>
         <VueInputUi
           v-model="value3"
+          dark
+          label="is dark"
+          color="purple"
+        />
+        <br>
+        <VueInputUi
+          v-model="value4"
           :error="true"
           label="Input with error='true' + text hint"
           hint="Error text"
@@ -44,26 +50,25 @@
         />
         <br>
         <VueInputUi
-          v-model="value4"
-          :dark="darkMode"
-        />
-        <br>
-        <VueInputUi
           v-model="value5"
-          dark
-          label="is dark"
-          color="purple"
+          label="Valid input state"
+          valid
         />
         <br>
         <VueInputUi
           v-model="value6"
+          :dark="darkMode"
+        />
+        <br>
+        <VueInputUi
+          v-model="value7"
           label="is disabled"
           :dark="darkMode"
           disabled
         />
         <br>
         <VueInputUi
-          v-model="value7"
+          v-model="value8"
           label="Number input"
           :dark="darkMode"
           type="number"
@@ -84,12 +89,13 @@
     data () {
       return {
         value1: 'VueInputUI',
-        value2: 'Hello world!',
-        value3: 'A beautiful input made with VueJs',
+        value2: 'A beautiful input made with VueJs',
+        value3: 'Customize size & color (dark mode)',
         value4: 'Error management',
-        value5: 'Customize size & color (dark mode)',
-        value6: null,
+        value5: 'Validator state',
+        value6: 'Hello world!',
         value7: null,
+        value8: null,
         darkMode: false
       }
     }
