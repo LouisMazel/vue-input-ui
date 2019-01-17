@@ -1,6 +1,6 @@
 {
   "name": "vue-input-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A beautiful input made with Vue JS",
   "author": "Louis Mazel <mazuel.loic@gmail.com>",
   "scripts": {
