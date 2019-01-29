@@ -73,6 +73,14 @@
           :dark="darkMode"
           type="number"
         />
+        <br>
+        <VueInputUi
+          v-model="value9"
+          label="Required input"
+          hint="is required"
+          :dark="darkMode"
+          required
+        />
       </div>
     </div>
   </div>
@@ -96,6 +104,7 @@
         value6: 'Hello world!',
         value7: null,
         value8: null,
+        value9: null,
         darkMode: false
       }
     }

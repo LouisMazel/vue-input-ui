@@ -7,7 +7,8 @@
       'has-error': error,
       'is-disabled': disabled,
       'is-dark': dark,
-      'is-focused': valid
+      'is-focused': valid,
+      'has-hint': hint && !value
     }, size]"
     class="field"
     @click="focusInput"
@@ -16,12 +17,13 @@
       :id="id"
       ref="VueInputUi"
       v-model="inputValue"
-      :placeholder="label"
+      :placeholder="labelValue"
       :disabled="disabled"
       :style="[borderStyle]"
       :type="type"
       class="field-input"
       :readonly="readonly"
+      :required="required"
       @focus="onFocus"
       @blur="onBlur"
       @click="$emit('click')"
@@ -29,12 +31,12 @@
     <label
       ref="label"
       :for="id"
-      :class="error ? 'text-danger' : null"
+      :class="error ? 'lm-text-danger' : null"
       :style="[colorStyle]"
       class="field-label"
       @click="focusInput"
     >
-      {{ hint || label }}
+      {{ hintValue || labelValue }}
     </label>
   </div>
 </template>
@@ -55,7 +57,8 @@
       type: { type: String, default: 'text' },
       readonly: { type: Boolean, default: false },
       valid: { type: Boolean, default: false },
-      validColor: { type: String, default: 'yellowgreen' }
+      validColor: { type: String, default: 'yellowgreen' },
+      required: { type: Boolean, default: false }
     },
     data: function () {
       return {
@@ -82,6 +85,20 @@
         set (value) {
           this.$emit('input', value)
         }
+      },
+      labelValue () {
+        let label = this.label
+        if (this.required && label) {
+          label += ` *`
+        }
+        return label
+      },
+      hintValue () {
+        let hint = this.hint
+        if (this.required && hint) {
+          hint += ` *`
+        }
+        return hint
       }
     },
     methods: {
@@ -123,7 +140,7 @@
     }
     .field-label{
       position: absolute;
-      top: 3px;
+      top: 4px;
       cursor: pointer;
       left: 13px;
       -webkit-transform: translateY(25%);
@@ -152,15 +169,20 @@
       font-size: 14px;
       z-index: 0;
     }
-    &.has-error {
-      .field-input {
-        border-color: orangered !important;
-      }
-    }
     &.has-value {
       .field-label {
         opacity: 1;
         -webkit-transform: translateY(0);
+        transform: translateY(0);
+        font-size: 11px;
+      }
+      .field-input {
+        padding-top: 14px;
+      }
+    }
+    &.has-hint {
+      .field-label{
+        opacity: 1;
         transform: translateY(0);
         font-size: 11px;
       }
@@ -176,6 +198,11 @@
         color: dodgerblue;
       }
     }
+    &.has-error {
+      .field-input {
+        border-color: orangered !important;
+      }
+    }
     &.is-disabled {
       .field-input {
         border-color: #CCC;
@@ -185,7 +212,7 @@
         cursor: default;
       }
     }
-    .text-danger {
+    .lm-text-danger {
       color: orangered !important;
     }
     &.is-dark {
