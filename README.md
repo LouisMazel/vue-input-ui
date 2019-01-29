@@ -55,13 +55,14 @@ Vue.component('vue-input-ui', VueInputUi);
 | id      | String     | false    | VueInputUi | -              |
 | label      | String     | false    | Enter Text | -              |
 | type       | String     | no       | text       | text or number |
-| hint*       | text       | no       | -          |                |
-| error** | Boolean    | no       | false      |                |
-| disabled | Boolean    | no       | false      |                |
-| dark | Boolean    | no       | false      |                |
-| size | Boolean    | no       | false      |                |
-| readonly | Boolean    | no       | false      |                |
+| size | String `sm or lg`    | no       | false      |                |
 | color | String `HEX`   | no       | dogderblue      |                |
+| hint*       | String       | no       | -          |                |
+| error** | Boolean    | no       | false      |                |
+| dark | Boolean    | no       | false      |                |
+| disabled | Boolean    | no       | false      |                |
+| required | Boolean    | no       | false      |                |
+| readonly | Boolean    | no       | false      |                |
 
 ## Contribution
 
