@@ -2,12 +2,11 @@
   <div
     ref="parent"
     :class="[{
-      'is-focused': isFocus,
+      'is-focused': isFocus || valid,
       'has-value': value,
       'has-error': error,
       'is-disabled': disabled,
       'is-dark': dark,
-      'is-focused': valid,
       'has-hint': hint && !value
     }, size]"
     class="field"
