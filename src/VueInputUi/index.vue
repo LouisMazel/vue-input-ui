@@ -9,24 +9,37 @@
       'is-dark': dark,
       'has-hint': hint && !value
     }, size]"
-    class="field"
+    class="field vue-input-ui"
     @click="focusInput"
   >
     <input
+      v-if="!textarea"
       :id="id"
       ref="VueInputUi"
       v-model="inputValue"
+      v-bind="$attrs"
       :placeholder="labelValue"
-      :disabled="disabled"
       :style="[borderStyle]"
       :type="type"
       class="field-input"
-      :readonly="readonly"
-      :required="required"
       @focus="onFocus"
       @blur="onBlur"
       @click="$emit('click')"
     >
+    <textarea
+      v-else
+      :id="id"
+      ref="VueInputUi"
+      v-model="inputValue"
+      v-bind="$attrs"
+      :placeholder="labelValue"
+      :style="[borderStyle]"
+      :type="type"
+      class="field-input textarea"
+      @focus="onFocus"
+      @blur="onBlur"
+      @click="$emit('click')"
+    />
     <label
       ref="label"
       :for="id"
@@ -57,7 +70,8 @@
       readonly: { type: Boolean, default: false },
       valid: { type: Boolean, default: false },
       validColor: { type: String, default: 'yellowgreen' },
-      required: { type: Boolean, default: false }
+      required: { type: Boolean, default: false },
+      textarea: { type: Boolean, default: false }
     },
     data: function () {
       return {
@@ -120,7 +134,7 @@
   *, *::before, *::after {
     box-sizing: border-box;
   }
-  .field{
+  .field.vue-input-ui {
     position: relative;
     &.is-dark {
       .field-label{
@@ -157,8 +171,6 @@
       transition-duration: 0.3s;
       position: relative;
       width: 100%;
-      height: 42px;
-      min-height: 42px;
       padding: 0 12px;
       font-weight: 400;
       -webkit-appearance: none;
@@ -167,6 +179,16 @@
       border-radius: 4px;
       font-size: 14px;
       z-index: 0;
+
+      &:not(.textarea) {
+        height: 42px;
+        min-height: 42px;
+      }
+      &.textarea {
+        padding: 8px 12px 0 12px;
+        min-height: 88px !important;
+        resize: vertical;
+      }
     }
     &.has-value {
       .field-label {
@@ -177,6 +199,9 @@
       }
       .field-input {
         padding-top: 14px;
+        &.textarea {
+          padding-top: 20px;
+        }
       }
     }
     &.has-hint {
@@ -187,6 +212,9 @@
       }
       .field-input {
         padding-top: 14px;
+        &.textarea {
+          padding-top: 20px;
+        }
       }
     }
     &.is-focused {
@@ -260,9 +288,12 @@
     }
     &.sm {
       .field-input {
-        height: 36px;
-        min-height: 36px;
         font-size: 12px;
+
+        &:not(.textarea) {
+          height: 36px;
+          min-height: 36px;
+        }
       }
       .field-label {
         font-size: 10px;
@@ -270,14 +301,20 @@
       &.has-value {
         .field-input {
           padding-top: 12px;
+          &.textarea {
+            padding-top: 18px;
+          }
         }
       }
     }
     &.lg {
       .field-input {
-        height: 48px;
-        min-height: 48px;
         font-size: 16px;
+
+        &:not(.textarea) {
+          height: 48px;
+          min-height: 48px;
+        }
       }
       .field-label {
         font-size: 14px;
@@ -285,6 +322,9 @@
       &.has-value {
         .field-input {
           padding-top: 16px;
+          &.textarea {
+            padding-top: 26px;
+          }
         }
       }
     }
