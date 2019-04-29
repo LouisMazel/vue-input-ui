@@ -88,7 +88,6 @@
           :dark="darkMode"
           textarea
           rows="4"
-          size="lg"
         />
       </div>
     </div>
