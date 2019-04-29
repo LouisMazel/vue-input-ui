@@ -1,6 +1,6 @@
 <template>
   <div
-    id="VueInputUi"
+    id="VueInputUiDemo"
     class="vue-input-ui"
     :class="{'dark': darkMode}"
   >
@@ -81,6 +81,14 @@
           :dark="darkMode"
           required
         />
+        <br>
+        <VueInputUi
+          v-model="value10"
+          label="Text area"
+          :dark="darkMode"
+          textarea
+          rows="4"
+        />
       </div>
     </div>
   </div>
@@ -105,6 +113,7 @@
         value7: null,
         value8: null,
         value9: null,
+        value10: null,
         darkMode: false
       }
     }
@@ -132,7 +141,7 @@
     -ms-flex: 1;
     flex: 1;
   }
-  #VueInputUi {
+  #VueInputUiDemo {
     min-height: 100%;
     &.dark {
       background-color: darken(#424242, 20%);
@@ -154,18 +163,6 @@
   }
   *, *::before, *::after {
     box-sizing: border-box;
-  }
-  textarea {
-    background-color: #FFF;
-    color: #bd4147;
-    border: 1px solid #CCC;
-    border-radius: 4px;
-    outline: none;
-    font-size: 85%;
-    width: 100%;
-    font-weight: 700;
-    font-family: monospace, monospace;
-    resize: none;
   }
   .btn {
     padding: 10px 20px;
@@ -217,10 +214,6 @@
     &.dark {
       background-color: darken(#424242, 10%);
       color: #FFF;
-      textarea {
-        background: #424242;
-        color: dodgerblue;
-      }
       .btn {
         &:hover {
           box-shadow: 0 0 8px 0 rgba(0,0,0,.6), 0 2px 4px 0 rgba(0,0,0,.5);
