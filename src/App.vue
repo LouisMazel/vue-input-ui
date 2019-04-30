@@ -80,6 +80,7 @@
           hint="is required"
           :dark="darkMode"
           required
+          loader
         />
         <br>
         <VueInputUi
@@ -88,6 +89,7 @@
           :dark="darkMode"
           textarea
           rows="4"
+          loader
         />
       </div>
     </div>

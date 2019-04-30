@@ -50,6 +50,10 @@
     >
       {{ hintValue || labelValue }}
     </label>
+    <div
+      v-if="loader"
+      class="loader"
+    />
   </div>
 </template>
 
@@ -71,7 +75,8 @@
       valid: { type: Boolean, default: false },
       validColor: { type: String, default: 'yellowgreen' },
       required: { type: Boolean, default: false },
-      textarea: { type: Boolean, default: false }
+      textarea: { type: Boolean, default: false },
+      loader: { type: Boolean, default: false },
     },
     data: function () {
       return {
@@ -326,6 +331,52 @@
             padding-top: 26px;
           }
         }
+      }
+    }
+    .loader {
+      top: -2px;
+      height: 2px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+
+      &::before {
+        display: block;
+        position: absolute;
+        content: '';
+        left: -200px;
+        width: 200px;
+        height: 2px;
+        background-color: rgba(black, 0.2);
+        animation: loading 2s linear infinite;
+      }
+    }
+
+    @keyframes loading {
+      from {
+        left: -200px;
+        width: 30%;
+      }
+
+      50% {
+        width: 30%;
+      }
+
+      70% {
+        width: 70%;
+      }
+
+      80% {
+        left: 50%;
+      }
+
+      95% {
+        left: 120%;
+      }
+
+      to {
+        left: 100%;
       }
     }
   }
