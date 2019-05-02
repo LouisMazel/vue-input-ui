@@ -50,9 +50,24 @@
     >
       {{ hintValue || labelValue }}
     </label>
+
+    <button
+      v-if="clearable && inputValue && !textarea"
+      class="field-clear"
+      title="clear"
+      type="button"
+      @click="clear"
+    >
+      <span class="field-clear__effect" />
+      <span>
+        ✕
+      </span>
+    </button>
+
     <div
       v-if="loader"
       class="loader"
+      :class="{ textarea }"
     />
   </div>
 </template>
@@ -77,6 +92,7 @@
       required: { type: Boolean, default: false },
       textarea: { type: Boolean, default: false },
       loader: { type: Boolean, default: false },
+      clearable: { type: Boolean, default: true }
     },
     data: function () {
       return {
@@ -130,6 +146,10 @@
       onBlur: function () {
         this.$emit('blur')
         this.isFocus = false
+      },
+      clear () {
+        this.$emit('input', null)
+        this.$emit('clear')
       }
     }
   }
@@ -143,16 +163,23 @@
     position: relative;
     &.is-dark {
       .field-label{
-        color: rgba(255, 255, 255, 0.70);
+        color: rgba(white, 0.70);
       }
       .field-input{
         background-color: #424242;
-        border-color: rgba(255, 255, 255, 0.70);
-        color: rgba(255, 255, 255, 0.70);
+        border-color: rgba(white, 0.70);
+        color: rgba(white, 0.70);
       }
       &.is-disabled {
         .field-label, .field-input {
           color: #000;
+        }
+      }
+      .field-clear {
+        color: rgba(white, 0.70);
+
+        &__effect {
+          background-color: rgba(white, 0.54);
         }
       }
     }
@@ -195,6 +222,57 @@
         resize: vertical;
       }
     }
+
+    .field-clear {
+      $clear-size: 24px;
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 8px;
+      margin: auto 0;
+      width: $clear-size;
+      height: $clear-size;
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: rgba(0, 0, 0, 0.54);
+      border-radius: $clear-size;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      & > span:not(.field-clear__effect) {
+        position: relative;
+        top: 1px;
+      }
+
+      &__effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: $clear-size;
+        height: $clear-size;
+        background-color: rgba(black, 0.54);
+        border-radius: $clear-size;
+        transform: scale(0);
+        transition: transform 200ms;
+      }
+
+      &:hover {
+        color: white;
+
+        .field-clear__effect {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+      }
+    }
+
     &.has-value {
       .field-label {
         opacity: 1;
@@ -249,24 +327,24 @@
     }
     &.is-dark {
       ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-        color: rgba(255, 255, 255, 0.70);
+        color: rgba(white, 0.70);
       }
       :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-        color: rgba(255, 255, 255, 0.70);
+        color: rgba(white, 0.70);
         opacity:  1;
       }
       ::-moz-placeholder { /* Mozilla Firefox 19+ */
-        color: rgba(255, 255, 255, 0.70);
+        color: rgba(white, 0.70);
         opacity:  1;
       }
       :-ms-input-placeholder { /* Internet Explorer 10-11 */
-        color: rgba(255, 255, 255, 0.70);
+        color: rgba(white, 0.70);
       }
       ::-ms-input-placeholder { /* Microsoft Edge */
-        color: rgba(255, 255, 255, 0.70);
+        color: rgba(white, 0.70);
       }
       ::placeholder { /* Most modern browsers support this now. */
-        color: rgba(255, 255, 255, 0.70);
+        color: rgba(white, 0.70);
       }
       &.is-disabled {
         ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -341,6 +419,10 @@
       overflow: hidden;
       border-radius: 2px;
 
+      &.textarea {
+        top: -7px;
+      }
+
       &::before {
         display: block;
         position: absolute;
@@ -377,6 +459,25 @@
 
       to {
         left: 100%;
+      }
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active  {
+      box-shadow: 0 0 0 30px white inset;
+      -webkit-box-shadow: 0 0 0 30px white inset;
+    }
+    &.is-dark {
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active  {
+        box-shadow: 0 0 0 30px #424242 inset;
+        -webkit-box-shadow: 0 0 0 30px #424242 inset;
+      }
+      input:-webkit-autofill {
+        -webkit-text-fill-color: rgba(white, 0.70) !important;
       }
     }
   }
