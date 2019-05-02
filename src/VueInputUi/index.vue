@@ -22,6 +22,7 @@
       :style="[borderStyle]"
       :type="type"
       class="field-input"
+      :disabled="disabled"
       @focus="onFocus"
       @blur="onBlur"
       @click="$emit('click')"
@@ -92,7 +93,7 @@
       required: { type: Boolean, default: false },
       textarea: { type: Boolean, default: false },
       loader: { type: Boolean, default: false },
-      clearable: { type: Boolean, default: true }
+      clearable: { type: Boolean, default: false }
     },
     data: function () {
       return {

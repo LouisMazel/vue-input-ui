@@ -25,6 +25,7 @@
           color="purple"
           size="sm"
           :dark="darkMode"
+          clearable
         />
         <br>
         <VueInputUi
@@ -38,6 +39,7 @@
           dark
           label="is dark"
           color="purple"
+          clearable
         />
         <br>
         <VueInputUi
@@ -53,6 +55,7 @@
           v-model="value5"
           label="Valid input state"
           valid
+          clearable
         />
         <br>
         <VueInputUi
@@ -72,6 +75,7 @@
           label="Number input"
           :dark="darkMode"
           type="number"
+          clearable
         />
         <br>
         <VueInputUi
@@ -81,6 +85,7 @@
           :dark="darkMode"
           required
           loader
+          clearable
         />
         <br>
         <VueInputUi
