@@ -63,6 +63,7 @@ Vue.component('vue-input-ui', VueInputUi);
 | disabled | Boolean    | no       | false      |                |
 | required | Boolean    | no       | false      |                |
 | readonly | Boolean    | no       | false      |                |
+| clearable | Boolean    | no       | false      |                |
 
 ## Contribution
 
