@@ -57,6 +57,7 @@
       class="field-clear"
       title="clear"
       type="button"
+      tabindex="-1"
       @click="clear"
     >
       <span class="field-clear__effect" />
