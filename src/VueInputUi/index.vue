@@ -70,7 +70,12 @@
       v-if="loader"
       class="loader"
       :class="{ textarea }"
-    />
+    >
+      <div
+        class="loader__progress-bar"
+        :style="[loaderProgressBarBg]"
+      />
+    </div>
   </div>
 </template>
 
@@ -113,6 +118,9 @@
         return cond
           ? { color: `${this.valid ? this.validColor : this.color}` }
           : null
+      },
+      loaderProgressBarBg () {
+        return { backgroundColor: this.color }
       },
       inputValue: {
         get () {
@@ -163,6 +171,9 @@
   }
   .field.vue-input-ui {
     position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+
     &.is-dark {
       .field-label{
         color: rgba(white, 0.70);
@@ -327,6 +338,30 @@
     .lm-text-danger {
       color: orangered !important;
     }
+
+    .loader {
+      top: -2px;
+      height: 2px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+
+      &.textarea {
+        top: -7px;
+      }
+
+      &__progress-bar {
+        display: block;
+        position: absolute;
+        content: '';
+        left: -200px;
+        width: 200px;
+        height: 2px;
+        animation: loading 2s linear infinite;
+      }
+    }
+
     &.is-dark {
       ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
         color: rgba(white, 0.70);
@@ -411,29 +446,6 @@
             padding-top: 26px;
           }
         }
-      }
-    }
-    .loader {
-      top: -2px;
-      height: 2px;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      border-radius: 2px;
-
-      &.textarea {
-        top: -7px;
-      }
-
-      &::before {
-        display: block;
-        position: absolute;
-        content: '';
-        left: -200px;
-        width: 200px;
-        height: 2px;
-        background-color: rgba(black, 0.2);
-        animation: loading 2s linear infinite;
       }
     }
 

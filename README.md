@@ -54,7 +54,7 @@ Vue.component('vue-input-ui', VueInputUi);
 | v-model    | String/Int | true     | -          | -              |
 | id      | String     | false    | VueInputUi | -              |
 | label      | String     | false    | Enter Text | -              |
-| type       | String     | no       | text       | text or number |
+| type       | String     | no       | text       | [text|number|textarea] |
 | size | String `sm or lg`    | no       | false      |                |
 | color | String `HEX`   | no       | dogderblue      |                |
 | hint*       | String       | no       | -          |                |
@@ -64,6 +64,7 @@ Vue.component('vue-input-ui', VueInputUi);
 | required | Boolean    | no       | false      |                |
 | readonly | Boolean    | no       | false      |                |
 | clearable | Boolean    | no       | false      |                |
+| loader | Boolean    | no       | false      |                |
 
 ## Contribution
 
