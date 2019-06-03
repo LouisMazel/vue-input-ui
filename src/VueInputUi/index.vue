@@ -171,8 +171,6 @@
   }
   .field.vue-input-ui {
     position: relative;
-    border-radius: 4px;
-    overflow: hidden;
 
     &.is-dark {
       .field-label{
