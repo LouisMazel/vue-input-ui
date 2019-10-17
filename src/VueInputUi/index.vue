@@ -23,6 +23,8 @@
       :type="type"
       class="field-input"
       :disabled="disabled"
+      @keydown="keyDown"
+      @keyup="keyUp"
       @focus="onFocus"
       @blur="onBlur"
       @click="$emit('click')"
@@ -37,6 +39,8 @@
       :style="[borderStyle]"
       :type="type"
       class="field-input textarea"
+      @keydown="keyDown"
+      @keyup="keyUp"
       @focus="onFocus"
       @blur="onBlur"
       @click="$emit('click')"
@@ -160,6 +164,12 @@
       clear () {
         this.$emit('input', null)
         this.$emit('clear')
+      },
+      keyUp (e) {
+        this.$emit('keyup', e)
+      },
+      keyDown (e) {
+        this.$emit('keydown', e)
       }
     }
   }
