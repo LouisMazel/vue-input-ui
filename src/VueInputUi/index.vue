@@ -2,7 +2,8 @@
   <div
     ref="parent"
     :class="[{
-      'is-focused': isFocus || valid,
+      'is-focused': isFocus,
+      'is-valid': valid,
       'has-value': value,
       'has-error': error,
       'is-disabled': disabled,
