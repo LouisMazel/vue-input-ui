@@ -1,6 +1,6 @@
 {
   "name": "vue-input-ui",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "A beautiful input made with Vue JS",
   "author": "Louis Mazel <mazuel.loic@gmail.com>",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "npm run build:lib && npm run build:docs",
     "test": "vue-cli-service test:unit /test/specs",
     "lint": "vue-cli-service lint",
-    "before-publish": "npm i && npm run lint && npm audit && && npm run build",
+    "before-publish": "npm i && npm run lint && npm audit && npm run build",
     "build:docs": "vue-cli-service build --dest docs --mode production",
     "build:lib": "vue-cli-service build --target lib ./src/VueInputUi/index.vue",
     "publish-npm:beta": "npm publish --tag beta",
