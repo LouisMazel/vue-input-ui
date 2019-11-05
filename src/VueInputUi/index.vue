@@ -351,15 +351,16 @@
     }
 
     .loader {
-      top: -2px;
+      bottom: 0;
       height: 2px;
-      width: 100%;
-      position: relative;
+      left: 2px;
+      width: calc(100% - 4px);
+      position: absolute;
       overflow: hidden;
       border-radius: 4px;
 
       &.textarea {
-        top: -7px;
+        bottom: 6px;
       }
 
       &__progress-bar {

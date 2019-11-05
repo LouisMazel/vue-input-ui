@@ -12,10 +12,17 @@
       <h5>{{ !value5 ? '-' : value5 }}</h5>
       <button
         class="btn"
-        style="margin-top: 20px;"
+        style="margin-top: 10px;"
         @click="darkMode = !darkMode"
       >
         {{ darkMode ? 'Disable' : 'Enable' }} Dark Mode
+      </button>
+      <button
+        class="btn"
+        style="margin-top: 10px; margin-left: 10px;"
+        @click="loading = !loading"
+      >
+        Toggle loader
       </button>
       <br>
       <div class="component-container">
@@ -26,12 +33,14 @@
           size="sm"
           :dark="darkMode"
           clearable
+          :loader="loading"
         />
         <br>
         <VueInputUi
           v-model="value2"
           label="Input with value"
           :dark="darkMode"
+          :loader="loading"
         />
         <br>
         <VueInputUi
@@ -40,6 +49,7 @@
           label="is dark"
           color="purple"
           clearable
+          :loader="loading"
         />
         <br>
         <VueInputUi
@@ -49,6 +59,7 @@
           hint="Error text"
           size="lg"
           :dark="darkMode"
+          :loader="loading"
         />
         <br>
         <VueInputUi
@@ -56,11 +67,13 @@
           label="Valid input state"
           valid
           clearable
+          :loader="loading"
         />
         <br>
         <VueInputUi
           v-model="value6"
           :dark="darkMode"
+          :loader="loading"
         />
         <br>
         <VueInputUi
@@ -68,6 +81,7 @@
           label="is disabled"
           :dark="darkMode"
           disabled
+          :loader="loading"
         />
         <br>
         <VueInputUi
@@ -76,6 +90,7 @@
           :dark="darkMode"
           type="number"
           clearable
+          :loader="loading"
         />
         <br>
         <VueInputUi
@@ -84,7 +99,7 @@
           hint="is required"
           :dark="darkMode"
           required
-          loader
+          :loader="!loading"
           clearable
         />
         <br>
@@ -94,7 +109,7 @@
           :dark="darkMode"
           textarea
           rows="4"
-          loader
+          :loader="!loading"
         />
       </div>
     </div>
@@ -121,7 +136,8 @@
         value8: null,
         value9: null,
         value10: null,
-        darkMode: false
+        darkMode: false,
+        loading: false
       }
     }
   }
