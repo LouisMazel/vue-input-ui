@@ -263,6 +263,7 @@
       color: rgba(0, 0, 0, 0.54);
       border-radius: $clear-size;
       cursor: pointer;
+      font-size: 12px;
 
       &:focus {
         outline: none;
