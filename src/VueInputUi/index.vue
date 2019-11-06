@@ -182,23 +182,32 @@
   *, *::before, *::after {
     box-sizing: border-box;
   }
+
   .field.vue-input-ui {
     position: relative;
+
+    &:not(.field-input.textarea) {
+      height: 42px;
+      min-height: 42px;
+    }
 
     &.is-dark {
       .field-label{
         color: rgba(white, 0.70);
       }
-      .field-input{
+
+      .field-input {
         background-color: #424242;
         border-color: rgba(white, 0.70);
         color: rgba(white, 0.70);
       }
+
       &.is-disabled {
         .field-label, .field-input {
           color: #000;
         }
       }
+
       .field-clear {
         color: rgba(white, 0.70);
 
@@ -207,7 +216,8 @@
         }
       }
     }
-    .field-label{
+
+    .field-label {
       position: absolute;
       top: 4px;
       cursor: pointer;
@@ -420,6 +430,11 @@
       }
     }
     &.sm {
+      &:not(.field-input.textarea) {
+        height: 36px;
+        min-height: 36px;
+      }
+
       .field-input {
         font-size: 12px;
 
@@ -441,6 +456,11 @@
       }
     }
     &.lg {
+      &:not(.field-input.textarea) {
+        height: 48px;
+        min-height: 48px;
+      }
+
       .field-input {
         font-size: 16px;
 
