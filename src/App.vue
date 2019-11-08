@@ -1,32 +1,43 @@
 <template>
   <div
     id="VueInputUiDemo"
-    class="vue-input-ui"
+    class="vue-input-ui-demo flex"
     :class="{'dark': darkMode}"
   >
     <div class="container">
-      <h1>{{ !value1 ? '-' : value1 }}</h1>
-      <h2>{{ !value2 ? '-' : value2 }}</h2>
-      <h3>{{ !value3 ? '-' : value3 }}</h3>
-      <h4>{{ !value4 ? '-' : value4 }}</h4>
-      <h5>{{ !value5 ? '-' : value5 }}</h5>
-      <button
-        class="btn"
-        style="margin-top: 10px;"
-        @click="darkMode = !darkMode"
-      >
-        {{ darkMode ? 'Disable' : 'Enable' }} Dark Mode
-      </button>
-      <button
-        class="btn"
-        style="margin-top: 10px; margin-left: 10px;"
-        @click="loading = !loading"
-      >
-        Toggle loader
-      </button>
+      <h1 class="mb-2 mt-4">
+        {{ !value1 ? '-' : value1 }}
+      </h1>
+      <h2 class="mb-2">
+        {{ !value2 ? '-' : value2 }}
+      </h2>
+      <h3 class="mb-2">
+        {{ !value3 ? '-' : value3 }}
+      </h3>
+      <h4 class="mb-2">
+        {{ !value4 ? '-' : value4 }}
+      </h4>
+      <h5 class="mb-2">
+        {{ !value5 ? '-' : value5 }}
+      </h5>
+      <div class="flex justify-content-center pt-3 mb-2">
+        <button
+          class="btn"
+          @click="darkMode = !darkMode"
+        >
+          Toggle Dark Mode
+        </button>
+        <button
+          class="btn btn-success ml-2"
+          @click="loading = !loading"
+        >
+          Toggle loader
+        </button>
+      </div>
       <br>
       <div class="component-container">
         <VueInputUi
+          id="VueInputUi1"
           v-model="value1"
           label="Initial input"
           color="purple"
@@ -37,15 +48,29 @@
         />
         <br>
         <VueInputUi
+          id="VueInputUi2"
           v-model="value2"
-          label="Input with value"
+          label="Custom border radius"
           :dark="darkMode"
+          :loader="loading"
+          :border-radius="8"
+        />
+        <br>
+        <VueInputUi
+          id="VueInputUi3"
+          v-model="value3"
+          :dark="!darkMode"
+          label="Custom bg dark color"
+          dark-color="#21222e"
+          clearable
+          :border-radius="8"
           :loader="loading"
         />
         <br>
         <VueInputUi
+          id="VueInputUi4"
           v-model="value3"
-          dark
+          :dark="!darkMode"
           label="is dark"
           color="purple"
           clearable
@@ -53,6 +78,7 @@
         />
         <br>
         <VueInputUi
+          id="VueInputUi5"
           v-model="value4"
           :error="true"
           label="Input with error='true' + text hint"
@@ -63,28 +89,33 @@
         />
         <br>
         <VueInputUi
+          id="VueInputUi6"
           v-model="value5"
           label="Valid input state"
           valid
+          :dark="darkMode"
           clearable
           :loader="loading"
         />
         <br>
         <VueInputUi
+          id="VueInputUi7"
           v-model="value6"
           :dark="darkMode"
           :loader="loading"
         />
         <br>
         <VueInputUi
+          id="VueInputUi8"
           v-model="value7"
-          label="is disabled"
+          label="Is disabled"
           :dark="darkMode"
           disabled
           :loader="loading"
         />
         <br>
         <VueInputUi
+          id="VueInputUi9"
           v-model="value8"
           label="Number input"
           :dark="darkMode"
@@ -94,9 +125,10 @@
         />
         <br>
         <VueInputUi
+          id="VueInputUi10"
           v-model="value9"
           label="Required input"
-          hint="is required"
+          hint="Is required"
           :dark="darkMode"
           required
           :loader="!loading"
@@ -104,11 +136,13 @@
         />
         <br>
         <VueInputUi
+          id="VueInputUi11"
           v-model="value10"
           label="Text area"
           :dark="darkMode"
           textarea
           rows="4"
+          color="tomato"
           :loader="!loading"
         />
       </div>
@@ -144,131 +178,69 @@
 </script>
 
 <style lang="scss">
-  @import "./assets/main.scss";
-  html, body {
+  @import 'style-helpers';
+
+  html,
+  body {
     margin: 0;
     min-height: 100%;
   }
-  html {
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox;      /* TWEENER - IE 10 */
-    display: -webkit-flex;     /* NEW - Chrome */
-    display: flex;
-    width: 100%;
-  }
-  body {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -moz-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-  }
-  #VueInputUiDemo {
-    min-height: 100%;
+
+  .vue-input-ui-demo {
+    background-color: white;
+
+    .container {
+      text-align: center;
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    }
+
+    .component {
+      padding: 10px;
+      background: #FFF;
+      border-radius: 4px;
+      border: 1px solid #EBEBEB;
+
+      &:hover {
+        box-shadow: 0 0 8px 0 rgba(232, 237, 250, 0.6), 0 2px 4px 0 rgba(232, 237, 250, 0.5);
+      }
+    }
+
+    .component-container {
+      margin: 0 10px 20px 10px;
+      padding: 20px;
+      background: #FFF;
+      border-radius: 4px;
+      border: 1px solid #EBEBEB;
+      min-width: 300px;
+      transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      flex: 1 0 48%;
+
+      &:hover {
+        box-shadow: 0 0 8px 0 rgba(232, 237, 250, 0.6), 0 2px 4px 0 rgba(232, 237, 250, 0.5);
+      }
+
+      &.dark {
+        background-color: darken(#424242, 10%);
+        color: #FFF;
+      }
+    }
+
     &.dark {
       background-color: darken(#424242, 20%);
+
+      .component-container,
+      .component {
+        border: 1px solid #424242;
+        background-color: darken(#424242, 10%);
+
+        &:hover {
+          box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.6), 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        }
+      }
+
       .container {
         color: white;
       }
-      header {
-        color: rgba(255, 255, 255, 0.70);
-      }
-    }
-  }
-  .container {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  .btn {
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 12px;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-    background-color: #96bf31;
-    color: #FFF;
-    font-weight: 500;
-    &:hover {
-      background-color: darken(#96bf31, 10%);
-      box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
-    }
-    &.option {
-      background-color: #424242;
-      &:hover {
-        background-color: darken(#424242, 10%);
-      }
-    }
-  }
-  .component {
-    padding: 10px;
-    background: #FFF;
-    border-radius: 4px;
-    border: 1px solid #ebebeb;
-    &:hover {
-      box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
-    }
-    &.options {
-      margin-bottom: 20px;
-    }
-  }
-  .component-container {
-    margin: 0 10px 20px 10px;
-    padding: 20px;
-    background: #FFF;
-    border-radius: 4px;
-    border: 1px solid #ebebeb;
-    min-width: 300px;
-    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-    flex: 1 0 48%;
-    &:hover {
-      box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
-    }
-    &.dark {
-      background-color: darken(#424242, 10%);
-      color: #FFF;
-      .btn {
-        &:hover {
-          box-shadow: 0 0 8px 0 rgba(0,0,0,.6), 0 2px 4px 0 rgba(0,0,0,.5);
-        }
-        &.option {
-          background-color: #424242;
-          &:hover {
-            background-color: lighten(#424242, 10%);
-          }
-        }
-      }
-    }
-  }
-  .dark {
-    .component-container, .component {
-      border: 1px solid #424242;
-      background-color: darken(#424242, 10%);
-      &:hover {
-        box-shadow: 0 0 8px 0 rgba(0,0,0,.6), 0 2px 4px 0 rgba(0,0,0,.5);
-      }
-    }
-    hr {
-      border-color: #424242;
-    }
-  }
-  @media screen and (max-width: 1024px) {
-    .components-container.flex {
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      flex-flow: column;
-      -moz-flex-direction: column;
     }
   }
 </style>

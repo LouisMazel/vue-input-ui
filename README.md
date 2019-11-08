@@ -60,11 +60,13 @@ Vue.component('vue-input-ui', VueInputUi);
 | hint*       | String       | no       | -          |                |
 | error** | Boolean    | no       | false      |                |
 | dark | Boolean    | no       | false      |                |
+| dark-color (4)                   | String (hex)      | no       | #424242  |
 | disabled | Boolean    | no       | false      |                |
 | required | Boolean    | no       | false      |                |
 | readonly | Boolean    | no       | false      |                |
 | clearable | Boolean    | no       | false      |                |
 | loader | Boolean    | no       | false      |                |
+| border-radius                   | Number           | no       | 4 |
 
 ## Contribution
 

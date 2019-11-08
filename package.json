@@ -4,11 +4,13 @@
   "description": "A beautiful input made with Vue JS",
   "author": "Louis Mazel <mazuel.loic@gmail.com>",
   "scripts": {
-    "serve": "vue-cli-service serve --mode development",
+    "serve": "vue-cli-service serve --mode development --open",
     "serve:nuxt": "nuxt src",
     "build": "npm run build:lib && npm run build:docs",
     "test": "vue-cli-service test:unit /test/specs",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint && npm run lint:style",
+    "lint:style": "stylelint 'src/**/*.scss' 'src/**/*.vue'",
+    "lint:style:fix": "stylelint 'src/**/*.scss' 'src/**/*.vue' --fix",
     "before-publish": "npm i && npm run lint && npm audit && npm run build",
     "build:docs": "vue-cli-service build --dest docs --mode production",
     "build:lib": "vue-cli-service build --target lib ./src/VueInputUi/index.vue",
@@ -23,6 +25,7 @@
     "nuxt/"
   ],
   "dependencies": {
+    "style-helpers": "^0.2.8",
     "vue": "^2.5.21"
   },
   "devDependencies": {
@@ -36,6 +39,10 @@
     "nuxt": "^2.9.2",
     "path": "^0.12.7",
     "sass-loader": "^7.1.0",
+    "stylelint": "^11.1.1",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-order": "^3.1.1",
+    "stylelint-scss": "^3.12.1",
     "vue-server-renderer": "^2.6.9",
     "vue-template-compiler": "^2.5.21"
   },
