@@ -222,6 +222,7 @@
       border-radius: $border-radius;
       font-size: 14px;
       z-index: 0;
+      caret-color: $primary-color;
 
       &:not(.textarea) {
         height: 42px;
@@ -546,11 +547,12 @@
       }
     }
 
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-      box-shadow: 0 0 0 30px $second-color inset;
+    &__input:-webkit-autofill,
+    &__input:-webkit-autofill:hover,
+    &__input:-webkit-autofill:focus,
+    &__input:-webkit-autofill:active {
+      box-shadow: 0 0 0 1000px $bg-color inset;
+      -webkit-text-fill-color: $second-color;
     }
   }
 </style>
