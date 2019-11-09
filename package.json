@@ -25,6 +25,7 @@
     "nuxt/"
   ],
   "dependencies": {
+    "css-vars-ponyfill": "^2.1.2",
     "style-helpers": "^0.2.8",
     "vue": "^2.5.21"
   },

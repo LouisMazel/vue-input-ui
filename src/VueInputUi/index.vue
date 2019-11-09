@@ -10,7 +10,7 @@
       'is-dark': dark,
       'has-hint': hint
     }, size]"
-    :style="[colorVars]"
+    :style="[cssTheme]"
     class="vue-input-ui"
     @click="focusInput"
   >
@@ -85,6 +85,7 @@
 
 <script>
   import getTheme from './themes'
+  import cssVars from 'css-vars-ponyfill'
 
   export default {
     name: 'VueInputUi',
@@ -115,7 +116,7 @@
       }
     },
     computed: {
-      colorVars () {
+      cssTheme () {
         const { dark, color, darkColor, validColor, borderRadius } = this
         return getTheme(
           {
@@ -145,6 +146,14 @@
         return this.required && hint ? hint += ` *` : hint
       }
     },
+    watch: {
+      dark () {
+        this.setCssVars()
+      }
+    },
+    mounted () {
+      this.setCssVars()
+    },
     methods: {
       focusInput () {
         this.$refs.VueInputUi.focus()
@@ -166,6 +175,11 @@
       },
       keyDown (e) {
         this.$emit('keydown', e)
+      },
+      setCssVars () {
+        cssVars({
+          variables: this.cssTheme
+        })
       }
     }
   }
@@ -174,17 +188,17 @@
 <style lang="scss" scoped>
   @import 'style-helpers';
 
-  $primary-color: var(--primary-color);
-  $primary-color-transparency: var(--primary-color-transparency);
-  $error-color-transparency: var(--error-color-transparency);
-  $second-color: var(--second-color);
-  $third-color: var(--third-color);
-  $muted-color: var(--muted-color);
-  $hover-color: var(--hover-color);
-  $bg-color: var(--bg-color);
-  $valid-color: var(--valid-color);
-  $valid-color-transparency: var(--valid-color-transparency);
-  $border-radius: var(--border-radius);
+  $primary-color: var(--input-ui-primary-color);
+  $primary-color-transparency: var(--input-ui-primary-color-transparency);
+  $error-color-transparency: var(--input-ui-error-color-transparency);
+  $second-color: var(--input-ui-second-color);
+  $third-color: var(--input-ui-third-color);
+  $muted-color: var(--input-ui-muted-color);
+  $hover-color: var(--input-ui-hover-color);
+  $bg-color: var(--input-ui-bg-color);
+  $valid-color: var(--input-ui-valid-color);
+  $valid-color-transparency: var(--input-ui-valid-color-transparency);
+  $border-radius: var(--input-ui-border-radius);
   $error-color: orangered;
   $disabled-color: #747474;
 

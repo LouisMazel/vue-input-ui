@@ -21,14 +21,30 @@
         {{ !value5 ? '-' : value5 }}
       </h5>
       <div class="flex justify-content-center pt-3 mb-2">
+        <a
+          class="btn btn-sm btn-dark"
+          href="https://github.com/LouisMazel/vue-input-ui"
+          target="_blank"
+        >
+          Github
+        </a>
+        <a
+          class="btn btn-danger ml-2 btn-sm"
+          href="https://npmjs.com/package/vue-input-ui"
+          target="_blank"
+        >
+          Npm
+        </a>
+      </div>
+      <div class="flex justify-content-center pt-3 mb-2">
         <button
-          class="btn"
+          class="btn btn-sm"
           @click="darkMode = !darkMode"
         >
           Toggle Dark Mode
         </button>
         <button
-          class="btn btn-success ml-2"
+          class="btn btn-success ml-2 btn-sm"
           @click="loading = !loading"
         >
           Toggle loader
