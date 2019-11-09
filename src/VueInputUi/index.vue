@@ -565,8 +565,8 @@
     &__input:-webkit-autofill:hover,
     &__input:-webkit-autofill:focus,
     &__input:-webkit-autofill:active {
-      box-shadow: 0 0 0 1000px $bg-color inset;
-      -webkit-text-fill-color: $second-color;
+      box-shadow: 0 0 0 1000px $bg-color inset !important;
+      -webkit-text-fill-color: $second-color !important;
     }
   }
 </style>
