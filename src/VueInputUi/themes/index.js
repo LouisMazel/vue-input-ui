@@ -1,17 +1,23 @@
-import { ShadeColor, HexToRgba, isColorName, colorNameToHex } from '@/utils/ColorTransfomer'
+import { ShadeColor, HexToRgba, isColorName, colorNameToHex } from '@/utils/ColorTransfomer.js'
 
-export default ({ dark, color, lightColor, darkColor, validColor, borderRadius }) => {
+export default ({ color, lightColor, darkColor, validColor, borderRadius, errorColor }) => {
   return {
-    '--input-ui-primary-color': color,
-    '--input-ui-primary-color-transparency': isColorName(color) ? HexToRgba(colorNameToHex(color), 0.7) : HexToRgba(color, 0.7),
-    '--input-ui-second-color': dark ? 'rgba(255, 255, 255, 0.7)' : '#747474',
-    '--input-ui-third-color': dark ? 'rgba(255, 255, 255, 0.7)' : '#CCC',
-    '--input-ui-bg-color': dark ? darkColor : lightColor,
-    '--input-ui-hover-color': dark ? ShadeColor(darkColor, 20) : ShadeColor(lightColor, -8),
-    '--input-ui-valid-color': validColor,
-    '--input-ui-muted-color': dark ? 'rgba(255, 255, 255, 0.3)' : '#747474',
-    '--input-ui-border-radius': `${borderRadius}px`,
-    '--input-ui-error-color-transparency': HexToRgba(colorNameToHex('orangered'), 0.7),
-    '--input-ui-valid-color-transparency': isColorName(validColor) ? HexToRgba(colorNameToHex(validColor), 0.7) : HexToRgba(validColor, 0.7)
+    '--vue-input-ui-primary-color': color,
+    '--vue-input-ui-second-color-light': '#747474',
+    '--vue-input-ui-second-color-dark': 'rgba(255, 255, 255, 0.7)',
+    '--vue-input-ui-third-color-light': '#CCC',
+    '--vue-input-ui-third-color-dark': 'rgba(255, 255, 255, 0.7)',
+    '--vue-input-ui-bg-color-light': lightColor,
+    '--vue-input-ui-bg-color-dark': darkColor,
+    '--vue-input-ui-error-color': errorColor,
+    '--vue-input-ui-valid-color': validColor,
+    '--vue-input-ui-hover-color-light': ShadeColor(lightColor, -8),
+    '--vue-input-ui-hover-color-dark': ShadeColor(darkColor, 20),
+    '--vue-input-ui-muted-color-light': '#747474',
+    '--vue-input-ui-muted-color-dark': 'rgba(255, 255, 255, 0.3)',
+    '--vue-input-ui-primary-color-transparency': isColorName(color) ? HexToRgba(colorNameToHex(color), 0.7) : HexToRgba(color, 0.7),
+    '--vue-input-ui-error-color-transparency': isColorName(errorColor) ? HexToRgba(colorNameToHex(errorColor), 0.7) : HexToRgba(errorColor, 0.7),
+    '--vue-input-ui-valid-color-transparency': isColorName(validColor) ? HexToRgba(colorNameToHex(validColor), 0.7) : HexToRgba(validColor, 0.7),
+    '--vue-input-ui-border-radius': `${borderRadius}px`
   }
 }

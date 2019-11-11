@@ -125,7 +125,8 @@
             darkColor,
             validColor,
             borderRadius,
-            lightColor: '#FFFFFF'
+            lightColor: '#FFFFFF',
+            errorColor: 'orangered'
           }
         )
       },
@@ -188,18 +189,23 @@
 <style lang="scss" scoped>
   @import 'style-helpers';
 
-  $primary-color: var(--input-ui-primary-color);
-  $primary-color-transparency: var(--input-ui-primary-color-transparency);
-  $error-color-transparency: var(--input-ui-error-color-transparency);
-  $second-color: var(--input-ui-second-color);
-  $third-color: var(--input-ui-third-color);
-  $muted-color: var(--input-ui-muted-color);
-  $hover-color: var(--input-ui-hover-color);
-  $bg-color: var(--input-ui-bg-color);
-  $valid-color: var(--input-ui-valid-color);
-  $valid-color-transparency: var(--input-ui-valid-color-transparency);
-  $border-radius: var(--input-ui-border-radius);
-  $error-color: orangered;
+  $primary-color: var(--vue-input-ui-primary-color);
+  $second-color-light: var(--vue-input-ui-second-color-light);
+  $second-color-dark: var(--vue-input-ui-second-color-dark);
+  $third-color-light: var(--vue-input-ui-third-color-light);
+  $third-color-dark: var(--vue-input-ui-third-color-dark);
+  $muted-color-light: var(--vue-input-ui-muted-color-light);
+  $muted-color-dark: var(--vue-input-ui-muted-color-dark);
+  $hover-color-light: var(--vue-input-ui-hover-color-light);
+  $hover-color-dark: var(--vue-input-ui-hover-color-dark);
+  $bg-color-light: var(--vue-input-ui-bg-color-light);
+  $bg-color-dark: var(--vue-input-ui-bg-color-dark);
+  $valid-color: var(--vue-input-ui-valid-color);
+  $error-color: var(--vue-input-ui-error-color);
+  $error-color-transparency: var(--vue-input-ui-error-color-transparency);
+  $primary-color-transparency: var(--vue-input-ui-primary-color-transparency);
+  $valid-color-transparency: var(--vue-input-ui-valid-color-transparency);
+  $border-radius: var(--vue-input-ui-border-radius);
   $disabled-color: #747474;
 
   .vue-input-ui {
@@ -219,12 +225,12 @@
       opacity: 0;
       transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
       font-size: 11px;
-      color: $second-color;
+      color: $second-color-light;
     }
 
     &__input {
       cursor: pointer;
-      background-color: $bg-color;
+      background-color: $bg-color-light;
       transition-duration: 0.3s;
       position: relative;
       width: 100%;
@@ -232,7 +238,7 @@
       font-weight: 400;
       appearance: none;
       outline: none;
-      border: 1px solid $third-color;
+      border: 1px solid $third-color-light;
       border-radius: $border-radius;
       font-size: 14px;
       z-index: 0;
@@ -250,27 +256,35 @@
       }
 
       &::-webkit-input-placeholder {
-        color: $second-color;
+        color: $second-color-light;
       }
 
       &::-moz-placeholder {
-        color: $second-color;
+        color: $second-color-light;
       }
 
       &:-ms-input-placeholder {
-        color: $second-color;
+        color: $second-color-light;
       }
 
       &::-ms-input-placeholder {
-        color: $second-color;
+        color: $second-color-light;
       }
 
       &:-moz-placeholder {
-        color: $second-color;
+        color: $second-color-light;
       }
 
       &::placeholder {
-        color: $second-color;
+        color: $second-color-light;
+      }
+
+      &__input:-webkit-autofill,
+      &__input:-webkit-autofill:hover,
+      &__input:-webkit-autofill:focus,
+      &__input:-webkit-autofill:active {
+        box-shadow: 0 0 0 1000px $bg-color-light inset !important;
+        -webkit-text-fill-color: $second-color-light !important;
       }
     }
 
@@ -287,7 +301,7 @@
       appearance: none;
       border: none;
       background: transparent;
-      color: $second-color;
+      color: $second-color-light;
       border-radius: $clear-size;
       cursor: pointer;
       font-size: 12px;
@@ -309,7 +323,7 @@
         bottom: 0;
         width: $clear-size;
         height: $clear-size;
-        background-color: $muted-color;
+        background-color: $muted-color-light;
         border-radius: $clear-size;
         transform: scale(0);
         transition: transform 200ms;
@@ -321,6 +335,90 @@
         .vue-input-ui__clear__effect {
           transform: scale(1);
           opacity: 0.6;
+        }
+      }
+    }
+
+    &.is-dark {
+      .vue-input-ui {
+        &__label {
+          color: $second-color-dark;
+        }
+
+        &__input {
+          background-color: $bg-color-dark;
+          border: 1px solid $third-color-dark;
+          color: $second-color-dark;
+
+          &::-webkit-input-placeholder {
+            color: $second-color-dark;
+          }
+
+          &::-moz-placeholder {
+            color: $second-color-dark;
+          }
+
+          &:-ms-input-placeholder {
+            color: $second-color-dark;
+          }
+
+          &::-ms-input-placeholder {
+            color: $second-color-dark;
+          }
+
+          &:-moz-placeholder {
+            color: $second-color-dark;
+          }
+
+          &::placeholder {
+            color: $second-color-dark;
+          }
+
+          &__input:-webkit-autofill,
+          &__input:-webkit-autofill:hover,
+          &__input:-webkit-autofill:focus,
+          &__input:-webkit-autofill:active {
+            box-shadow: 0 0 0 1000px $bg-color-dark inset !important;
+            -webkit-text-fill-color: $second-color-dark !important;
+          }
+        }
+
+        &__clear {
+          color: $second-color-dark;
+
+          &__effect {
+            background-color: $muted-color-dark;
+          }
+
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+
+    &.is-focused {
+      .vue-input-ui {
+        &__input {
+          border-color: $primary-color;
+          box-shadow: 0 0 0 0.2rem $primary-color-transparency;
+          border-color: $primary-color;
+        }
+        &__label {
+          color: $primary-color;
+        }
+      }
+
+      &.has-error {
+        .vue-input-ui__input {
+          box-shadow: 0 0 0 0.2rem $error-color-transparency;
+        }
+      }
+
+      &.is-valid {
+        .vue-input-ui__input {
+          border-color: $valid-color;
+          box-shadow: 0 0 0 0.2rem $valid-color-transparency;
         }
       }
     }
@@ -358,30 +456,6 @@
       }
     }
 
-    &.is-focused {
-      .vue-input-ui__input {
-        border-color: $primary-color;
-        box-shadow: 0 0 0 0.2rem $primary-color-transparency;
-      }
-
-      .vue-input-ui__label {
-        color: $primary-color;
-      }
-
-      &.has-error {
-        .vue-input-ui__input {
-          box-shadow: 0 0 0 0.2rem $error-color-transparency;
-        }
-      }
-
-      &.is-valid {
-        .vue-input-ui__input {
-          border-color: $valid-color;
-          box-shadow: 0 0 0 0.2rem $valid-color-transparency;
-        }
-      }
-    }
-
     &.is-valid {
       .vue-input-ui__input {
         border-color: $valid-color;
@@ -399,12 +473,6 @@
 
       .vue-input-ui__label {
         color: $error-color;
-      }
-    }
-
-    &.is-dark:not(.is-disabled) {
-      .vue-input-ui__input {
-        color: $second-color;
       }
     }
 
@@ -559,14 +627,6 @@
       to {
         left: 100%;
       }
-    }
-
-    &__input:-webkit-autofill,
-    &__input:-webkit-autofill:hover,
-    &__input:-webkit-autofill:focus,
-    &__input:-webkit-autofill:active {
-      box-shadow: 0 0 0 1000px $bg-color inset !important;
-      -webkit-text-fill-color: $second-color !important;
     }
   }
 </style>
