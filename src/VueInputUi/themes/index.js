@@ -1,4 +1,4 @@
-import { ShadeColor, HexToRgba, isColorName, colorNameToHex } from '@/utils/ColorTransfomer.js'
+import { ShadeColor, HexToRgba, isColorName, colorNameToHex } from 'color-transformer-ui'
 
 export default ({ color, lightColor, darkColor, validColor, borderRadius, errorColor }) => {
   return {
