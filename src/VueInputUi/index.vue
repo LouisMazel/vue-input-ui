@@ -110,7 +110,7 @@
       clearable: { type: Boolean, default: false },
       borderRadius: { type: Number, default: 4 }
     },
-    data: function () {
+    data () {
       return {
         isFocus: false
       }
@@ -147,11 +147,6 @@
         return this.required && hint ? hint += ` *` : hint
       }
     },
-    watch: {
-      dark () {
-        this.setCssVars()
-      }
-    },
     mounted () {
       this.setCssVars()
     },
@@ -159,11 +154,11 @@
       focusInput () {
         this.$refs.VueInputUi.focus()
       },
-      onFocus: function () {
+      onFocus () {
         this.$emit('focus')
         this.isFocus = true
       },
-      onBlur: function () {
+      onBlur () {
         this.$emit('blur')
         this.isFocus = false
       },
