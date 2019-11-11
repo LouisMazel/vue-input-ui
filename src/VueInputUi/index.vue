@@ -402,8 +402,8 @@
         &__input {
           border-color: $primary-color;
           box-shadow: 0 0 0 0.2rem $primary-color-transparency;
-          border-color: $primary-color;
         }
+
         &__label {
           color: $primary-color;
         }
